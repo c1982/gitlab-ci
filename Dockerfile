@@ -18,7 +18,7 @@ RUN apt-get -q update && apt-get install -y -q \
     $(lsb_release -cs) \
     stable" && \
     apt-get update && \
-    apt-get -y install docker-ce=19.03.5 && \
+    apt-get -y install docker-ce=5:19.03.0~3-0~debian-buster && \
     rm -rf /var/lib/apt/lists/* && \
     pip3 install -q docker-compose awscli ansible-tower-cli
     
