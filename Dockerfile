@@ -4,11 +4,11 @@ ENV LC_ALL=C.UTF-8
 RUN apt-get -q update && apt-get install -y -q \
     python3-pip \
     jq \
-    docker \
     apt-transport-https \
     ca-certificates \
     curl \
     gnupg2 \
+    apt-utils \
     openssh-server \
     software-properties-common \
     php php-zip php-curl php-simplexml && \
@@ -18,9 +18,8 @@ RUN apt-get -q update && apt-get install -y -q \
     $(lsb_release -cs) \
     stable" && \
     apt-get update && \
-    apt-get -y install docker-ce=5:19.03.0~3-0~debian-buster && \
+    apt-get -y install docker-ce=5:19.03.0~3-0~debian-buster docker-ce-cli=5:19.03.0~3-0~debian-buster containerd.io && \
     rm -rf /var/lib/apt/lists/* && \
     pip3 install -q docker-compose awscli ansible-tower-cli
     
-
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
